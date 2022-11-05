@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: "postgres"
+    environment:
+      POSTGRES_USER: vova
+      POSTGRES_PASSWORD: adminvova
+      POSTGRES_DB: coffee_db
+    volumes:
+      - ./coffee-data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    image: "dpage/pgadmin4"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    # restart: always
+    ports:
+      - 5050:80
